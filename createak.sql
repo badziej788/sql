@@ -14,7 +14,7 @@ CONSTRAINT       	agecjakoncertowa_fk FOREIGN KEY(NIP)
 -- --------------------------------------------------------
 
 CREATE TABLE gatunek(
-  idgatunek    int  INCREMENT               NOT NULL,
+  idgatunek    int                         NOT NULL,
   gatunek      Char(50)                    NOT NULL,
 CONSTRAINT       	gatunek_fk FOREIGN KEY(gatunek)
                          	REFERENCES wykonawca(nazwa)
@@ -23,7 +23,7 @@ CONSTRAINT       	gatunek_fk FOREIGN KEY(gatunek)
 CONSTRAINT       	gatunek_fk FOREIGN KEY(gatunek)
              	REFERENCES koncert(idkoncert)
               ON UPDATE CASCADE ON DELETE SET NULL
-                          )
+                          );
 -- --------------------------------------------------------
 
 
@@ -40,9 +40,9 @@ CONSTRAINT       support_fk FOREIGN KEY(idsupport)
 
 CREATE TABLE wstep (
   idwstep    serial,
-  Wiek       integer      DEFAULT NULL COMMENT 'ograniczenie wiekowe',
+  Wiek       integer      DEFAULT NULL ,
   Cena       numeric(7,2) DEFAULT NULL,
-  Pula       numeric(7,2) DEFAULT NULL COMMENT 'pula biletow',
+  Pula       numeric(7,2) DEFAULT NULL ,
 
 CONSTRAINT       	 wstep_fk FOREIGN KEY(idwstep)
                          	REFERENCES koncert(idnazwa)
@@ -62,7 +62,7 @@ CONSTRAINT       	wykonawca_fk FOREIGN KEY(idwykonawca)
 
 -- --------------------------------------------------------
 CREATE TABLE koncert (
-  idkoncert           INT  INCREMENT       NOT NULL,
+   idkoncert           INT                 NOT NULL,
   Data                date                 NOT NULL,
   Typ                 char                 NOT NULL,
   PatronMedialny      char,
