@@ -1,6 +1,6 @@
-drop table agecja_koncertowa;
-drop table gatunek;
-drop table koncert;
-drop table support;
-drop table wstep;
-drop table wykonawca;
+drop table agecja_koncertowa CASCADE;
+drop table gatunek CASCADE;
+drop table koncert CASCADE;
+drop table support CASCADE;
+drop table wstep CASCADE;
+drop table wykonawca CASCADE;
