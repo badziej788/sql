@@ -79,16 +79,16 @@ ADD CONSTRAINT wykonawca_koncert_idkoncert_fk
 FOREIGN KEY (idwykonawca) REFERENCES koncert (idkoncert);
 ALTER TABLE agecja_koncertowa
 ADD CONSTRAINT agecja_koncertowa_koncert_sponsor_fk
-FOREIGN KEY (NIP) REFERENCES koncert (sponsor);
+FOREIGN KEY (NIP) REFERENCES koncert (idsponsor);
 ALTER TABLE support
 ADD CONSTRAINT support_wykonawca__idwykonawca_fk
-FOREIGN KEY (nazwa) REFERENCES wykonawca (idwykonawca);
+FOREIGN KEY (idsupport) REFERENCES wykonawca (idwykonawca);
 ALTER TABLE gatunek
 ADD CONSTRAINT gatunek_koncert_miejsce_fk
-FOREIGN KEY (idgatunek) REFERENCES koncert (miejsce);
+FOREIGN KEY (idgatunek) REFERENCES koncert (idkoncert);
 ALTER TABLE gatunek
 ADD CONSTRAINT gatunek_wykonawca_idwykonawca_fk
 FOREIGN KEY (idgatunek) REFERENCES wykonawca (idwykonawca);
 ALTER TABLE koncert
 ADD CONSTRAINT koncert_wstep_idwstep_fk
-FOREIGN KEY (miejsce) REFERENCES wstep (idwstep);
+FOREIGN KEY (idkoncert) REFERENCES wstep (idwstep);
