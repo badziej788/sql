@@ -9,8 +9,9 @@ drop table wykonawca;
 
 
 CREATE TABLE agecja_koncertowa
-(   idak SERIAL PRIMARY KEY NOT NULL,
-    NIP INT NOT NULL,
+(
+    IdAK SERIAL PRIMARY KEY NOT NULL,
+    NIP INT PRIMARY KEY NOT NULL,
     przedstawiciel VARCHAR(30) NOT NULL,
     siedziba VARCHAR(30) NOT NULL,
     adres VARCHAR(50) NOT NULL,
@@ -29,7 +30,7 @@ CREATE TABLE koncert
     godzina_rozpoczecia TIME NOT NULL,
     miejsce VARCHAR(50) NOT NULL,
     miejscowosc VARCHAR(30) NOT NULL,
-    sponsor VARCHAR(30)
+    sponsor INT
 
 );
 -- --------------------------------------------------------
@@ -38,7 +39,7 @@ CREATE TABLE koncert
 
 CREATE TABLE wstep
 (
-    idwstep SERIAL PRIMARY KEY NOT NULL,
+    idwstep SERIAL PRIMARY KEY,
     ograniczenie_wieku INT,
     cena FLOAT,
     Pula INT
@@ -74,4 +75,3 @@ CREATE TABLE wykonawca
     data_zalozenia DATE NOT NULL
 
 );
-
