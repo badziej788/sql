@@ -11,7 +11,7 @@ drop table wykonawca;
 CREATE TABLE agecja_koncertowa
 (
     IdAK SERIAL PRIMARY KEY NOT NULL,
-    NIP INT PRIMARY KEY NOT NULL,
+    NIP INT NOT NULL,
     przedstawiciel VARCHAR(30) NOT NULL,
     siedziba VARCHAR(30) NOT NULL,
     adres VARCHAR(50) NOT NULL,
