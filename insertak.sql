@@ -1,38 +1,69 @@
-INSERT INTO agecja_koncertowa (NIP, przedstawiciel, siedziba, adres, glowny_organizator) VALUES
+INSERT INTO agecja_koncertowa (NIP, nazwa, siedziba, adres, glowny_organizator) VALUES
 (148596232, 'Sapik', 'Jan_Kowalski', 'Szczecinek, Narutowicza 15', 'KonGroup'),
 (229503672, 'Stefan Baucha', 'Koszalin', 'Pilska 75', 'GarBar'),
-(358693044, 'Sapik', 'Jan_Kowalski', 'Szczecinek, Narutowicza 15', 'Garage_Pub'),
+(358693044, 'Sapik', 'Jan_Kowalski', 'Szczecinek, Narutowicza 15', 'Garage Pub'),
+(358692044, 'Federico', 'Kazimierz_Kowalik', 'Szczecin, Traugutta 1', 'Avanti'),
+(351193044, 'Suprimo', 'Marcin Michalik', 'Zamość, Matusewicz 152', 'Metro'),
+(358667044, 'EDM', 'Michał Piaseczny', 'Poznań, Kocia 37', 'Renomo'),
 (412345231, 'Miasto_Bydgoszcz', 'Bydgoszcz', 'Bydgoszcz, Szafera 95', 'Burmistrz');
 
-INSERT INTO gatunek (idgatunek, gatunek) VALUES
-(1, 'rock'),
-(2, 'elektroniczny'),
-(3, 'rock'),
-(4, 'jazz');
+INSERT INTO gatunek (gatunek) VALUES
+('rock'),
+('reggae'),
+('rock'), 
+('techno'), 
+('blues'),
+('house'),
+('raga'),
+('ludowy'),
+('hip hop'),
+('jazz');
 
-INSERT INTO koncert (idkoncert, data, typ, patron_medialny, godzina_rozpoczecia, Miejsce, Miejscowosc, Sponsor) VALUES
-(1, '2016-04-30', 'koncert', 'GAWEX', '17:00:00', 'Kino Wolność', 'Szczecinek', 'SAPIK'),
-(2, '2015-08-29', 'FESTIWAL', NULL, '16:00:00', 'Wieża Przemysława', 'Koszalin', NULL),
-(3, '2016-04-30', 'koncert', 'GAWEX', '17:00:00', 'Kino Wolność', 'Szczecinek', 'SAPIK'),
-(4, '2016-04-30', 'FESTIWAL', 'polKON', '17:00:00', 'Hala_Przemyslawa', 'Bydgoszcz', 'Miasto');
+INSERT INTO koncert (data, typ, patron_medialny, godzina_rozpoczecia, Miejsce, Miejscowosc, Sponsor) VALUES
+('2016-04-30', 'koncert', 'GAWEX', '17:00:00', 'Kino Wolność', 'Szczecinek', 'SAPIK'),
+('2015-08-29', 'FESTIWAL', NULL, '16:00:00', 'Wieża Przemysława', 'Koszalin', NULL),
+  ('2016-04-30', 'koncert', 'Garni', '17:00:00', 'Kino Wolność', 'Gwda', 'SAPIK'),
+  ('2016-07-15', 'koncert', 'MLM', '19:00:00', 'Stary rynek', 'Barkowo', 'SAPIK'),
+  ('2016-05-28', 'FESTIWAK', 'GAWEX', '17:00:00', 'U PAWLA', 'Wałcz', 'SAPIK'),
+  ('2016-08-07', 'koncert', 'Looks', '18:00:00', 'Kino Wolność', 'Czarne', 'SAPIK'),
+  ('2016-09-11', 'FESIWAL', 'Gambit', '17:00:00', 'Stadion miejski', 'Chojnice', 'SAPIK'),
+('2016-04-30', 'koncert', 'GAWEX', '17:00:00', 'Kino Wolność', 'Szczecinek', 'SAPIK'),
+('2016-04-30', 'FESTIWAL', 'polKON', '13:00:00', 'Hala_Przemyslawa', 'Bydgoszcz', 'Miasto');
 
-INSERT INTO support (idsupport, nazwa, data_zalozenia, wokalista) VALUES
-(1, 'Pandora', '2010-12-07', 'Jan_Kowalski'),
-(2, 'Adamantiuma', '2009-01-05', 'Anna_Czerska'),
-(3, 'Metaligun', '2003-12-04', 'Krystian_Strach'),
-(4, 'Kamikaze', '2007-02-26', 'Marek_Zaleski');
+INSERT INTO support (nazwa, data_zalozenia, wokalista) VALUES
+('Pandora', '2010-12-07', 'Jan_Kowalski'),
+('Adamantiuma', '2009-01-05', 'Anna_Czerska'),
 
-INSERT INTO wstep (idwstep, ograniczenie_wieku, cena, pula) VALUES
-(1, NULL, 30, 300),
-(2, 18, 50, 200),
-(3, NULL, 30, 300),
-(4, NULL, 50, 200);
+  ('Amarant', '2000-02-17', 'Krystyna_Czubuwna'),
+  ('Jungle', '2003-01-04', 'Mateusz_Wise'),
+  ('DJ Gieniu', '2005-04-28', 'Eugeniusz Hydraulik'),
+  ('Jam Raw', '2010-10-10', 'Andrzej Kleks'),
+  ('Dj koollin', '2011-12-04', 'Martyna Szaliczyńska'),
+  
+  
+('Kamikaze', '2007-02-26', 'Marek_Zaleski');
 
-INSERT INTO wykonawca (idwykonawca, nazwa, data_zalozenia, wokalista) VALUES
-(1, 'Materia', '2000-03-12', 'Michal_Piesiak'),
-(2, 'pokahontas', '2005-05-24', 'Sebastian_Farczynski'),
-(3, 'JawRa', '1996-12-12', 'John_Ziggi'),
-(4, 'Mephisto', '1994-09-12', 'Maciej_Sandrzycki');
+INSERT INTO wstep (ograniczenie_wieku, cena, pula) VALUES
+( NULL, 30, 300),
+( 18, 50, 200),
+
+  ( NULL, 15, 2000),
+  ( 15, 20, 150),
+  ( NULL, 30, 300),
+  ( 18, 30, 380),
+  ( NULL, 30, 300),
+( NULL, 50, 200);
+
+INSERT INTO wykonawca (nazwa, data_zalozenia, wokalista) VALUES
+('Materia', '2000-03-12', 'Michal_Piesiak'),
+
+  ('Mathematic', '2003-07-22', 'Patryk Mrau'),
+  ('pokahontas', '2001-05-27', 'Krzysztof Czyk'),
+  ('pokahontas', '2007-08-25', 'Karol Mazuruk'),
+  ('pokahontas', '2005-09-15', 'Szymon Sobocki'),
+  ('pokahontas', '2009-10-19', 'Klaudia Czaniczewska'),
+( 'JawRa', '1996-12-12', 'John_Ziggi'),
+('Mephisto', '1994-09-12', 'Maciej_Sandrzycki');
 
 ALTER TABLE wykonawca
 ADD CONSTRAINT wykonawca_koncert_idkoncert_fk
