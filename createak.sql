@@ -18,6 +18,10 @@ CREATE TABLE agecja_koncertowa
 
 );
 -- --------------------------------------------------------
+ALTER TABLE agecja_koncertowa
+ADD CONSTRAINT agecja_koncertowa_koncert_sponsor_fk
+FOREIGN KEY (NIP) REFERENCES koncert (sponsor)
+
 CREATE TABLE koncert
 (
     idkoncert SERIAL PRIMARY KEY NOT NULL,
@@ -31,6 +35,9 @@ CREATE TABLE koncert
 
 );
 -- --------------------------------------------------------
+ALTER TABLE koncert
+ADD CONSTRAINT koncert_wstep_idwstep_fk
+FOREIGN KEY (miejsce) REFERENCES wstep (idwstep)
 CREATE TABLE wstep
 (
     idwstep SERIAL PRIMARY KEY,
@@ -47,6 +54,14 @@ CREATE TABLE gatunek
 
 );
 -- --------------------------------------------------------
+ALTER TABLE gatunek
+ADD CONSTRAINT gatunek_koncert_miejsce_fk
+FOREIGN KEY (idgatunek) REFERENCES koncert (miejsce);
+ALTER TABLE gatunek
+ADD CONSTRAINT gatunek_wykonawca_idwykonawca_fk
+FOREIGN KEY (idgatunek) REFERENCES wykonawca (idwykonawca)
+
+
 CREATE TABLE support
 (
     idsupport SERIAL PRIMARY KEY NOT NULL,
@@ -56,6 +71,10 @@ CREATE TABLE support
 
 );
 -- --------------------------------------------------------
+ALTER TABLE support
+ADD CONSTRAINT support_wykonawca__idwykonawca_fk
+FOREIGN KEY (nazwa, idsupport) REFERENCES wykonawca (, idwykonawca)
+
 CREATE TABLE wykonawca
 (
     idwykonawca SERIAL PRIMARY KEY NOT NULL,
@@ -64,16 +83,6 @@ CREATE TABLE wykonawca
     data_zalozenia DATE NOT NULL
 
 );
-
-   CONSTRAINT agecja_koncertowa_koncert_idkoncert_fk FOREIGN KEY (NIP) REFERENCES koncert (idkoncert)
-
-CONSTRAINT wykonawca_koncert_idkoncert_fk FOREIGN KEY (idwykonawca) REFERENCES koncert (idkoncert);
-    CONSTRAINT wykonawca_gatunek_gatunek_fk FOREIGN KEY (idwykonawca) REFERENCES gatunek (gatunek);
- CONSTRAINT support_wykonawca_idwykonawca_fk FOREIGN KEY (idsupport) REFERENCES wykonawca (idwykonawca);
-CONSTRAINT gatunek_koncert_idkoncert_fk FOREIGN KEY (idgatunek) REFERENCES koncert (idkoncert);
-    CONSTRAINT gatunek_wykonawca_idwykonawca_fk FOREIGN KEY (idgatunek) REFERENCES wykonawca (idwykonawca);
- CONSTRAINT wstep_koncert_idkoncert_fk FOREIGN KEY (idwstep) REFERENCES koncert (idkoncert);
-CONSTRAINT koncert_wstep_idwstep_fk FOREIGN KEY (idkoncert) REFERENCES wstep (idwstep) ON DELETE CASCADE;
-    CONSTRAINT koncert_agecjakoncertowa_NIP_fk FOREIGN KEY (idkoncert) REFERENCES agecja_koncertowa (NIP) ON DELETE CASCADE;
-    CONSTRAINT koncert_gatunek_idgatunek_fk FOREIGN KEY (idkoncert) REFERENCES gatunek (idgatunek) ON DELETE CASCADE;
-    CONSTRAINT koncert_wykonawca_idwykonawca_fk FOREIGN KEY (idkoncert) REFERENCES wykonawca (idwykonawca);
+ALTER TABLE wykonawca
+ADD CONSTRAINT wykonawca_koncert_idkoncert_fk
+FOREIGN KEY (data_zalozenia) REFERENCES koncert (idkoncert)
