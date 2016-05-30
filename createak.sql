@@ -11,10 +11,10 @@ drop table wykonawca;
 CREATE TABLE agecja_koncertowa
 (
     NIP INT PRIMARY KEY NOT NULL,
-    przedstawiciel CHAR NOT NULL,
-    siedziba CHAR NOT NULL,
-    adres CHAR NOT NULL,
-    glowny_organizator CHAR NOT NULL
+    przedstawiciel VARCHAR(30) NOT NULL,
+    siedziba VARCHAR(30) NOT NULL,
+    adres VARCHAR(50) NOT NULL,
+    glowny_organizator VARCHAR(50) NOT NULL
 
 );
 -- --------------------------------------------------------
@@ -24,11 +24,11 @@ CREATE TABLE koncert
 (
     idkoncert SERIAL PRIMARY KEY NOT NULL,
     data DATE NOT NULL,
-    typ BOOLEAN NOT NULL,
-    patron_medialny CHAR,
+    typ VARCHAR(30) NOT NULL,
+    patron_medialny VARCHAR(50),
     godzina_rozpoczecia TIME NOT NULL,
-    miejsce CHAR NOT NULL,
-    miejscowosc CHAR NOT NULL,
+    miejsce VARCHAR(50) NOT NULL,
+    miejscowosc VARCHAR(30) NOT NULL,
     sponsor INT
 
 );
@@ -39,7 +39,7 @@ CREATE TABLE koncert
 CREATE TABLE wstep
 (
     idwstep SERIAL PRIMARY KEY,
-    ograniczenie_wieku BOOLEAN,
+    ograniczenie_wieku INT,
     cena FLOAT,
     Pula INT
 
@@ -48,7 +48,7 @@ CREATE TABLE wstep
 CREATE TABLE gatunek
 (
     idgatunek SERIAL PRIMARY KEY NOT NULL,
-    gatunek CHAR NOT NULL
+    gatunek VARCHAR(30) NOT NULL
 
 );
 -- --------------------------------------------------------
@@ -58,9 +58,9 @@ CREATE TABLE gatunek
 CREATE TABLE support
 (
     idsupport SERIAL PRIMARY KEY NOT NULL,
-    nazwa CHAR NOT NULL,
+    nazwa VARCHAR(30) NOT NULL,
     data_zalozenia DATE,
-    wokalista CHAR
+    wokalista VARCHAR(30)
 
 );
 -- --------------------------------------------------------
@@ -69,8 +69,8 @@ CREATE TABLE support
 CREATE TABLE wykonawca
 (
     idwykonawca SERIAL PRIMARY KEY NOT NULL,
-    nazwa CHAR NOT NULL,
-    wokalista CHAR NOT NULL,
+    nazwa VARCHAR(30) NOT NULL,
+    wokalista VARCHAR(30) NOT NULL,
     data_zalozenia DATE NOT NULL
 
 );
