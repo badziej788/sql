@@ -20,7 +20,7 @@ CREATE TABLE agecja_koncertowa
 -- --------------------------------------------------------
 ALTER TABLE agecja_koncertowa
 ADD CONSTRAINT agecja_koncertowa_koncert_sponsor_fk
-FOREIGN KEY (NIP) REFERENCES koncert (sponsor)
+FOREIGN KEY (NIP) REFERENCES koncert (sponsor);
 
 CREATE TABLE koncert
 (
@@ -37,7 +37,9 @@ CREATE TABLE koncert
 -- --------------------------------------------------------
 ALTER TABLE koncert
 ADD CONSTRAINT koncert_wstep_idwstep_fk
-FOREIGN KEY (miejsce) REFERENCES wstep (idwstep)
+FOREIGN KEY (miejsce) REFERENCES wstep (idwstep);
+
+
 CREATE TABLE wstep
 (
     idwstep SERIAL PRIMARY KEY,
@@ -59,7 +61,7 @@ ADD CONSTRAINT gatunek_koncert_miejsce_fk
 FOREIGN KEY (idgatunek) REFERENCES koncert (miejsce);
 ALTER TABLE gatunek
 ADD CONSTRAINT gatunek_wykonawca_idwykonawca_fk
-FOREIGN KEY (idgatunek) REFERENCES wykonawca (idwykonawca)
+FOREIGN KEY (idgatunek) REFERENCES wykonawca (idwykonawca);
 
 
 CREATE TABLE support
@@ -73,7 +75,7 @@ CREATE TABLE support
 -- --------------------------------------------------------
 ALTER TABLE support
 ADD CONSTRAINT support_wykonawca__idwykonawca_fk
-FOREIGN KEY (nazwa, idsupport) REFERENCES wykonawca (, idwykonawca)
+FOREIGN KEY (nazwa) REFERENCES wykonawca (idwykonawca);
 
 CREATE TABLE wykonawca
 (
@@ -85,4 +87,4 @@ CREATE TABLE wykonawca
 );
 ALTER TABLE wykonawca
 ADD CONSTRAINT wykonawca_koncert_idkoncert_fk
-FOREIGN KEY (data_zalozenia) REFERENCES koncert (idkoncert)
+FOREIGN KEY (data_zalozenia) REFERENCES koncert (idkoncert);
