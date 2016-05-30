@@ -76,7 +76,7 @@ CREATE TABLE wykonawca
 );
 ALTER TABLE wykonawca
 ADD CONSTRAINT wykonawca_koncert_idkoncert_fk
-FOREIGN KEY (data_zalozenia) REFERENCES koncert (idkoncert);
+FOREIGN KEY (idwykonawca) REFERENCES koncert (idkoncert);
 ALTER TABLE agecja_koncertowa
 ADD CONSTRAINT agecja_koncertowa_koncert_sponsor_fk
 FOREIGN KEY (NIP) REFERENCES koncert (sponsor);
