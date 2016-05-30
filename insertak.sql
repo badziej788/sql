@@ -39,7 +39,7 @@ ADD CONSTRAINT wykonawca_koncert_idkoncert_fk
 FOREIGN KEY (idwykonawca) REFERENCES koncert (idkoncert) ON UPDATE CASCADE;
 ALTER TABLE agecja_koncertowa
 ADD CONSTRAINT agecja_koncertowa_koncert_sponsor_fk
-FOREIGN KEY (NIP) REFERENCES koncert (idkoncert)ON UPDATE CASCADE;
+FOREIGN KEY (idak) REFERENCES koncert (idkoncert)ON UPDATE CASCADE;
 ALTER TABLE support
 ADD CONSTRAINT support_wykonawca__idwykonawca_fk
 FOREIGN KEY (idsupport) REFERENCES wykonawca (idwykonawca) ON UPDATE CASCADE;
