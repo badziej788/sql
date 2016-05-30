@@ -74,21 +74,4 @@ CREATE TABLE wykonawca
     data_zalozenia DATE NOT NULL
 
 );
-ALTER TABLE wykonawca
-ADD CONSTRAINT wykonawca_koncert_idkoncert_fk
-FOREIGN KEY (idwykonawca) REFERENCES koncert (idkoncert) ON UPDATE CASCADE;
-ALTER TABLE agecja_koncertowa
-ADD CONSTRAINT agecja_koncertowa_koncert_sponsor_fk
-FOREIGN KEY (NIP) REFERENCES koncert (idkoncert)ON UPDATE CASCADE;
-ALTER TABLE support
-ADD CONSTRAINT support_wykonawca__idwykonawca_fk
-FOREIGN KEY (idsupport) REFERENCES wykonawca (idwykonawca) ON UPDATE CASCADE;
-ALTER TABLE gatunek
-ADD CONSTRAINT gatunek_koncert_miejsce_fk
-FOREIGN KEY (idgatunek) REFERENCES koncert (idkoncert) ON UPDATE CASCADE;
-ALTER TABLE gatunek
-ADD CONSTRAINT gatunek_wykonawca_idwykonawca_fk
-FOREIGN KEY (idgatunek) REFERENCES wykonawca (idwykonawca) ON UPDATE CASCADE;
-ALTER TABLE koncert
-ADD CONSTRAINT koncert_wstep_idwstep_fk
-FOREIGN KEY (idkoncert) REFERENCES wstep (idwstep) ON UPDATE CASCADE;
+
