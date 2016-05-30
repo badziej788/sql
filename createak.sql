@@ -1,87 +1,71 @@
 SET client_encoding='utf-8';
--- Baza danych: `agkoncertowa`
+
+drop table agecja_koncertowa;
+drop table gatunek;
+drop table koncert;
+drop table support;
+drop table wstep;
+drop table wykonawca;
+
+
+CREATE TABLE agecja_koncertowa
+(
+    NIP INT PRIMARY KEY NOT NULL,
+    przedstawiciel CHAR NOT NULL,
+    siedziba CHAR NOT NULL,
+    adres CHAR NOT NULL,
+    glowny_organizator CHAR NOT NULL,
+    CONSTRAINT agecja_koncertowa_koncert_idkoncert_fk FOREIGN KEY (NIP) REFERENCES koncert (idkoncert)
+);
 -- --------------------------------------------------------
-CREATE TABLE agecjakoncertowa (
-  NIP                   int            NOT NULL,
-  Przedstawiciel        char           NOT NULL,
-  Siedziba              char           NOT NULL,
-  Adres                 char           NOT NULL,
-  GlownyOrganizator     char           NOT NULL,
-CONSTRAINT       	agecjakoncertowa_fk FOREIGN KEY(NIP)
-                         	REFERENCES koncert(idkoncert)
-                          ON UPDATE CASCADE ON DELETE SET NULL
-                          );
+CREATE TABLE koncert
+(
+    idkoncert SERIAL PRIMARY KEY NOT NULL,
+    data DATE NOT NULL,
+    typ BOOLEAN NOT NULL,
+    patron_medialny CHAR,
+    godzina_rozpoczecia TIME NOT NULL,
+    miejsce CHAR NOT NULL,
+    miejscowosc CHAR NOT NULL,
+    sponsor INT,
+    CONSTRAINT koncert_wstep_idwstep_fk FOREIGN KEY (idkoncert) REFERENCES wstep (idwstep) ON DELETE CASCADE,
+    CONSTRAINT koncert_agecjakoncertowa_NIP_fk FOREIGN KEY (idkoncert) REFERENCES agecja_koncertowa (NIP) ON DELETE CASCADE,
+    CONSTRAINT koncert_gatunek_idgatunek_fk FOREIGN KEY (idkoncert) REFERENCES gatunek (idgatunek) ON DELETE CASCADE,
+    CONSTRAINT koncert_wykonawca_idwykonawca_fk FOREIGN KEY (idkoncert) REFERENCES wykonawca (idwykonawca)
+);
 -- --------------------------------------------------------
-
-CREATE TABLE gatunek(
-  idgatunek    int                         NOT NULL,
-  gatunek      Char(50)                    NOT NULL,
-CONSTRAINT       	gatunek_fk FOREIGN KEY(gatunek)
-                         	REFERENCES wykonawca(nazwa)
-                          ON UPDATE CASCADE ON DELETE SET NULL,
-
-CONSTRAINT       	gatunek_fk FOREIGN KEY(gatunek)
-             	REFERENCES koncert(idkoncert)
-              ON UPDATE CASCADE ON DELETE SET NULL
-                          );
+CREATE TABLE wstep
+(
+    idwstep SERIAL PRIMARY KEY,
+    ograniczenie_wieku BOOLEAN,
+    cena FLOAT,
+    Pula INT,
+    CONSTRAINT wstep_koncert_idkoncert_fk FOREIGN KEY (idwstep) REFERENCES koncert (idkoncert)
+);
 -- --------------------------------------------------------
-
-
-CREATE TABLE support (
-  idsupport       serial,
-  Nazwa           char       NOT NULL,
-  DataZalozenia   date   DEFAULT NULL,
-  Wokalista       char,
-CONSTRAINT       support_fk FOREIGN KEY(idsupport)
-                         	REFERENCES wykonawca(nazwa)
-                          ON UPDATE CASCADE ON DELETE SET NULL
-                          );
+CREATE TABLE gatunek
+(
+    idgatunek SERIAL PRIMARY KEY NOT NULL,
+    gatunek CHAR NOT NULL,
+    CONSTRAINT gatunek_koncert_idkoncert_fk FOREIGN KEY (idgatunek) REFERENCES koncert (idkoncert),
+    CONSTRAINT gatunek_wykonawca_idwykonawca_fk FOREIGN KEY (idgatunek) REFERENCES wykonawca (idwykonawca)
+);
 -- --------------------------------------------------------
-
-CREATE TABLE wstep (
-  idwstep    serial,
-  Wiek       integer      DEFAULT NULL ,
-  Cena       numeric(7,2) DEFAULT NULL,
-  Pula       numeric(7,2) DEFAULT NULL ,
-
-CONSTRAINT       	 wstep_fk FOREIGN KEY(idwstep)
-                         	REFERENCES koncert(idnazwa)
-                          ON UPDATE CASCADE ON DELETE SET NULL
-                          );
+CREATE TABLE support
+(
+    idsupport SERIAL PRIMARY KEY NOT NULL,
+    nazwa CHAR NOT NULL,
+    data_zalozenia DATE,
+    wokalista CHAR,
+    CONSTRAINT support_wykonawca_idwykonawca_fk FOREIGN KEY (idsupport) REFERENCES wykonawca (idwykonawca)
+);
 -- --------------------------------------------------------
-
-CREATE TABLE wykonawca (
-  idwykonawca          serial,
-  Nazwa                char                    NOT NULL,
-  DataZalozenia        date                    NOT NULL,
-  Wokalista            char                    NOT NULL,
-CONSTRAINT       	wykonawca_fk FOREIGN KEY(idwykonawca)
-                         	REFERENCES koncert(idkoncert)
-                          ON UPDATE CASCADE ON DELETE SET NULL
-                          );
-
--- --------------------------------------------------------
-CREATE TABLE koncert (
-   idkoncert           INT                 NOT NULL,
-  Data                date                 NOT NULL,
-  Typ                 char                 NOT NULL,
-  PatronMedialny      char,
-  GodzinaRozpoczecia  TIME                 NOT NULL,
-  Miejsce             char                 NOT NULL,
-  Miejscowosc         char                 NOT NULL,
-  Sponsor             char,
-
-    CONSTRAINT       	koncert_wykonawca_fk FOREIGN KEY(idkoncert)
-                       	REFERENCES kraj(nazwa)
-                        ON UPDATE CASCADE ON DELETE SET NULL,
-    CONSTRAINT       	koncert_wstep_fk FOREIGN KEY(idkoncert)
-                       	REFERENCES trener(id)
-                        ON UPDATE CASCADE ON DELETE SET NULL,
-    CONSTRAINT       	koncert_gatunek_fk FOREIGN KEY(idkoncert)
-                       	REFERENCES zawodnik(id)
-                        ON UPDATE CASCADE ON DELETE SET NULL,
-    CONSTRAINT       	koncert_agecjakoncertowa_fk FOREIGN KEY(idkoncert)
-                       	REFERENCES liga(nazwa)
-                        ON UPDATE CASCADE ON DELETE SET NULL
-                        );
--- --------------------------------------------------------
+CREATE TABLE wykonawca
+(
+    idwykonawca SERIAL PRIMARY KEY NOT NULL,
+    nazwa CHAR NOT NULL,
+    wokalista CHAR NOT NULL,
+    data_zalozenia DATE NOT NULL,
+    CONSTRAINT wykonawca_koncert_idkoncert_fk FOREIGN KEY (idwykonawca) REFERENCES koncert (idkoncert),
+    CONSTRAINT wykonawca_gatunek_gatunek_fk FOREIGN KEY (idwykonawca) REFERENCES gatunek (gatunek)
+);
