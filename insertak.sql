@@ -28,7 +28,8 @@ INSERT INTO koncert (data, typ, patron_medialny, godzina_rozpoczecia, Miejsce, M
   ('2016-08-07', 'koncert', 'Looks', '18:00:00', 'Kino Wolność', 'Czarne', 'SAPIK'),
   ('2016-09-11', 'FESIWAL', 'Gambit', '17:00:00', 'Stadion miejski', 'Chojnice', 'SAPIK'),
 ('2016-04-30', 'koncert', 'GAWEX', '17:00:00', 'Kino Wolność', 'Szczecinek', 'SAPIK'),
-('2016-04-30', 'FESTIWAL', 'polKON', '13:00:00', 'Hala_Przemyslawa', 'Bydgoszcz', 'Miasto');
+('2016-04-30', 'FESTIWAL', 'polKON', '13:00:00', 'Hala_Przemyslawa', 'Bydgoszcz', 'Miasto'),
+('2016-05-01', 'FESTIWAL', 'polKON', '13:00:00', 'Hala_Przemyslawa', 'Bydgoszcz', 'Miasto');
 
 INSERT INTO support (nazwa, data_zalozenia, wokalista) VALUES
 ('Pandora', '2010-12-07', 'Jan_Kowalski'),
@@ -52,6 +53,9 @@ INSERT INTO wstep (ograniczenie_wieku, cena, pula) VALUES
   ( NULL, 30, 300),
   ( 18, 30, 380),
   ( NULL, 30, 300),
+  ( 18, 30, 380),
+( NULL, 50, 200)
+( 18, 30, 380),
 ( NULL, 50, 200);
 
 INSERT INTO wykonawca (nazwa, data_zalozenia, wokalista) VALUES
