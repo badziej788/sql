@@ -13,7 +13,7 @@ CREATE TABLE agecja_koncertowa
     IdAK SERIAL PRIMARY KEY NOT NULL,
     NIP INT NOT NULL,
     nazwa VARCHAR(30) NOT NULL,
-    przedstawiciel VARCHAR(30) NOT NULL,
+    przedstawiciel VARCHAR(30) ,
     siedziba VARCHAR(30) NOT NULL,
     adres VARCHAR(50) NOT NULL,
     glowny_organizator VARCHAR(50) NOT NULL
