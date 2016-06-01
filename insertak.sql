@@ -63,11 +63,13 @@ INSERT INTO wykonawca (nazwa, data_zalozenia, wokalista) VALUES
 
   ('Mathematic', '2003-07-22', 'Patryk Mrau'),
   ('pokahontas', '2001-05-27', 'Krzysztof Czyk'),
-  ('pokahontas', '2007-08-25', 'Karol Mazuruk'),
-  ('pokahontas', '2005-09-15', 'Szymon Sobocki'),
-  ('pokahontas', '2009-10-19', 'Klaudia Czaniczewska'),
+  ('ponkis', '2007-08-25', 'Karol Mazuruk'),
+  ('pass', '2005-09-15', 'Szymon Sobocki'),
+  ('pomarancz', '2009-10-19', 'Klaudia Czaniczewska'),
 ( 'JawRa', '1996-12-12', 'John_Ziggi'),
-('Mephisto', '1994-09-12', 'Maciej_Sandrzycki');
+('Mephisto', '1994-09-12', 'Maciej_Sandrzycki'),
+('Matisa', '2005-09-15', 'Marcin Koracki'),
+ ('Bostos', '2001-09-15', 'Bolesław Marać');
 
 ALTER TABLE wykonawca
 ADD CONSTRAINT wykonawca_koncert_idkoncert_fk
