@@ -55,8 +55,7 @@ INSERT INTO wstep (ograniczenie_wieku, cena, pula) VALUES
   ( NULL, 30, 300),
   ( 18, 30, 380),
 ( NULL, 50, 200),
-( 18, 30, 380),
-( NULL, 50, 200);
+( NULL, 50, 500);
 
 INSERT INTO wykonawca (nazwa, data_zalozenia, wokalista) VALUES
 ('Materia', '2000-03-12', 'Michal_Piesiak'),
