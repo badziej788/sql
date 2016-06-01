@@ -54,7 +54,7 @@ INSERT INTO wstep (ograniczenie_wieku, cena, pula) VALUES
   ( 18, 30, 380),
   ( NULL, 30, 300),
   ( 18, 30, 380),
-( NULL, 50, 200)
+( NULL, 50, 200),
 ( 18, 30, 380),
 ( NULL, 50, 200);
 
