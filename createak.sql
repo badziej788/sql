@@ -12,7 +12,6 @@ drop table wejscie;
 drop table pomaga;
 drop table udzial;
 drop table rodzaj;
-drop table wejscie;
 drop table gra;
 
 
