@@ -36,7 +36,7 @@ CREATE TABLE koncert
     godzina_rozpoczecia TIME NOT NULL,
     miejsce VARCHAR(50) NOT NULL,
     miejscowosc VARCHAR(30) NOT NULL,
-    sponsor INT
+    sponsor VARCHAR(50)
 
 );
 -- --------------------------------------------------------
