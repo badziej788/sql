@@ -9,5 +9,4 @@ drop table wejscie CASCADE;
 drop table pomaga CASCADE;
 drop table udzial CASCADE;
 drop table rodzaj CASCADE;
-drop table wejscie CASCADE;
 drop table gra CASCADE;
