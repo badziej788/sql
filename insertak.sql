@@ -1,5 +1,5 @@
 INSERT INTO agecja_koncertowa (NIP, nazwa, siedziba, adres, glowny_organizator) VALUES
-(148596232, 'Sapik', 'Jan_Kowalski', 'Szczecinek, Narutowicza 15', 'KonGroup'),
+(148596232, 'Sapik', 'Jan_Kowalski', 'Szczecinek', 'Narutowicza 15', 'KonGroup'),
 (229503672, 'Stefan Baucha', 'Koszalin', 'Pilska 75', 'GarBar'),
 (358693044, 'Sapik', 'Jan_Kowalski', 'Szczecinek, Narutowicza 15', 'Garage Pub'),
 (358692044, 'Federico', 'Kazimierz_Kowalik', 'Szczecin, Traugutta 1', 'Avanti'),
