@@ -80,7 +80,8 @@ CREATE TABLE pomaga
     idsupport INT,
     CONSTRAINT pomaga_support_idsupport_fk FOREIGN KEY (idsupport) REFERENCES support (idsupport),
     CONSTRAINT pomaga_wykonawca_idwykonawca_fk FOREIGN KEY (idwykonawca) REFERENCES wykonawca (idwykonawca)
-)
+    ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 CREATE TABLE udzial
 (
@@ -88,13 +89,15 @@ CREATE TABLE udzial
     idwykonawca INT,
     CONSTRAINT udzial_koncert_idkoncert_fk FOREIGN KEY (idkoncert) REFERENCES koncert (idkoncert),
     CONSTRAINT udzial_wykonawca_idwykonawca_fk FOREIGN KEY (idwykonawca) REFERENCES wykonawca (idwykonawca)
-)
+    ON DELETE CASCADE ON UPDATE CASCADE
+);
 CREATE TABLE rodzaj
 (
     idgatunek INT,
     idkoncert INT,
     CONSTRAINT rodzaj_gatunek_idgatunek_fk FOREIGN KEY (idgatunek) REFERENCES gatunek (idgatunek),
     CONSTRAINT rodzaj_koncert_idkoncert_fk FOREIGN KEY (idgatunek) REFERENCES koncert (idkoncert)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 ;CREATE TABLE organizacja
 (
@@ -102,6 +105,7 @@ CREATE TABLE rodzaj
     idkoncert INT,
     CONSTRAINT organizacja_agecja_koncertowa_NIP_fk FOREIGN KEY (NIP) REFERENCES agecja_koncertowa (NIP),
     CONSTRAINT organizacja_koncert_idkoncert_fk FOREIGN KEY (idkoncert) REFERENCES koncert (idkoncert)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE TABLE wejscie
 (
@@ -109,6 +113,7 @@ CREATE TABLE wejscie
     idkoncert INT,
     CONSTRAINT wejscie_wstep_idwstep_fk FOREIGN KEY (idwstep) REFERENCES wstep (idwstep),
     CONSTRAINT wejscie_koncert_idkoncert_fk FOREIGN KEY (idwstep) REFERENCES koncert (idkoncert)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE gra
@@ -116,6 +121,7 @@ CREATE TABLE gra
     idgatunek INT,
     idwykonawca INT,
     CONSTRAINT gra_gatunek_idgatunek_fk FOREIGN KEY (idgatunek) REFERENCES gatunek (idgatunek),
-    CONSTRAINT gra_wykonawca_idwykonawca_fk FOREIGN KEY (idgwykonawca) REFERENCES wykonawca (idwykonawca)
+    CONSTRAINT gra_wykonawca_idwykonawca_fk FOREIGN KEY (idwykonawca) REFERENCES wykonawca (idwykonawca)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
